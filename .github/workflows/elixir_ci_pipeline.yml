@@ -1,0 +1,102 @@
+# Define the name of the GitHub Actions workflow
+name: Elixir CI
+
+# Define when the workflow should be triggered (on push to the main branch or a pull request to the main branch)
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# Set an environment variable for the Elixir Mix environment (in this case, "test")
+env:
+  MIX_ENV: test
+
+# Define the permissions needed for the job (in this case, read access to the contents of the repository)
+permissions:
+  contents: read
+
+# Define the jobs to be executed in this workflow
+jobs:
+
+  # Define a job called "test"
+  test:
+    # Define the services required for the job (in this case, a PostgreSQL database)
+    services:
+      db:
+        image: postgres:12
+        ports: [ '5432:5432' ]
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    # Define the operating system to be used for the job (in this case, Ubuntu)
+    runs-on: ubuntu-latest
+
+    # Define a name for the job (in this case, "Test on OTP x / Elixir y")
+    name: Test on OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+
+    # Define the strategy for the job (in this case, specifying the OTP and Elixir versions to be used)
+    strategy:
+      matrix:
+        otp: [ '25.0.4' ]
+        elixir: [ '1.14.1' ]
+
+    # Define the steps to be executed for the job
+    steps:
+
+      # Set up Elixir and the required versions
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+          elixir-version: ${{matrix.elixir}}
+
+      # Check out the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Cache the Elixir dependencies
+      - name: Cache deps
+        id: cache-deps
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-elixir-deps
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-${{ env.cache-name }}-
+
+      # Cache the compiled build
+      - name: Cache compiled build
+        id: cache-build
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-compiled-build
+        with:
+          path: _build
+          key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-${{ env.cache-name }}-
+            ${{ runner.os }}-mix-
+
+      # Install the Elixir dependencies
+      - name: Install dependencies
+        run: mix deps.get
+
+      # Compile the code and treat warnings as errors
+      - name: Compiles without warnings
+        run: mix compile --warnings-as-errors
+
+      # Check the code formatting
+      - name: Check Formatting
+        run: mix format --check-formatted
+
+      # Run the tests and display test coverage report
+      - name: Run tests
+        run: mix test --cover

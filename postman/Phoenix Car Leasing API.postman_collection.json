@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "6586aec5-0fca-43b9-bf6f-f6e89a106620",
+		"name": "Phoenix Car Leasing API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25305385"
+	},
+	"item": [
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "List Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car\": {\n        \"make\": \"Ford\",\n        \"model\": \"Mustang\",\n        \"year\": 1969,\n        \"price\": 10000.0,\n        \"mileage\": 0,\n        \"fuel\": \"gasoline\",\n        \"horsepower\": 350\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Car",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/cars/2fbdcd7d-4a26-4d59-b4e4-5725021f2baf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"cars",
+								"2fbdcd7d-4a26-4d59-b4e4-5725021f2baf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Car",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car\": {\n        \"make\": \"Ford\",\n        \"model\": \"Mustang\",\n        \"year\": 1972,\n        \"price\": 10000.0,\n        \"milage\": 0,\n        \"fuel\": \"gasoline\",\n        \"horsepower\": 350\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/cars/2fbdcd7d-4a26-4d59-b4e4-5725021f2baf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"cars",
+								"2fbdcd7d-4a26-4d59-b4e4-5725021f2baf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Car",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/cars/2fbdcd7d-4a26-4d59-b4e4-5725021f2baf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"cars",
+								"2fbdcd7d-4a26-4d59-b4e4-5725021f2baf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "List Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer\": {\n        \"first_name\": \"Tim\",\n        \"last_name\": \"Olsen\",\n        \"email\": \"timo@gmail.com\",\n        \"phone_number\": \"4782445323\",\n        \"password\": \"Burninhellfuckingcreep\"\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/customers/a85b8402-32c9-4935-be72-3e0197144135",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"customers",
+								"a85b8402-32c9-4935-be72-3e0197144135"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/customers/a85b8402-32c9-4935-be72-3e0197144135",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"customers",
+								"a85b8402-32c9-4935-be72-3e0197144135"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leases",
+			"item": [
+				{
+					"name": "List Leases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/leases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"leases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Lease",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"lease\": {\n    \"monthly_payment\": 500,\n    \"current_mileage\": 0,\n    \"mileage_limit\": 30000,\n    \"start_date\": \"2023-04-15\",\n    \"end_date\": \"2024-04-15\",\n    \"car_id\": \"2fbdcd7d-4a26-4d59-b4e4-5725021f2baf\",\n    \"customer_id\": \"f2b74eb1-f514-442c-8b98-cc498e39ac00\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/leases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"leases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Lease",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/leases/83bedc98-7c06-4b46-ab50-d176358c493e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"leases",
+								"83bedc98-7c06-4b46-ab50-d176358c493e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Lease",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"lease\": {\n    \"monthly_payment\": 750,\n    \"current_mileage\": 20000,\n    \"mileage_limit\": 30000,\n    \"start_date\": \"2023-04-15\",\n    \"end_date\": \"2024-04-15\",\n    \"car_id\": \"2fbdcd7d-4a26-4d59-b4e4-5725021f2baf\",\n    \"customer_id\": \"f2b74eb1-f514-442c-8b98-cc498e39ac00\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/leases/83bedc98-7c06-4b46-ab50-d176358c493e2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"leases",
+								"83bedc98-7c06-4b46-ab50-d176358c493e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Lease",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/leases/dd0f7903-0304-4f3e-8f11-a66c4e10a100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"leases",
+								"dd0f7903-0304-4f3e-8f11-a66c4e10a100"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
